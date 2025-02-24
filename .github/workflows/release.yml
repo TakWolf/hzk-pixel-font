@@ -25,4 +25,4 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
-          files: ./build/outputs/hzk-pixel-*px.*
+          files: ./build/releases/*.zip

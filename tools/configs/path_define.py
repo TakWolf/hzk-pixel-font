@@ -9,6 +9,7 @@ fonts_dir = assets_dir.joinpath('fonts')
 build_dir = project_root_dir.joinpath('build')
 dump_dir = build_dir.joinpath('dump')
 outputs_dir = build_dir.joinpath('outputs')
+releases_dir = build_dir.joinpath('releases')
 
 docs_dir = project_root_dir.joinpath('docs')
 
