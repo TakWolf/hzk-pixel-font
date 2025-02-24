@@ -19,8 +19,6 @@ body {
     margin-left: auto;
     margin-right: auto;
     padding: 64px 192px;
-    color: #4b4b4b;
-    background-color: bisque;
 }
 
 @media screen and (max-width: 1006px) {
