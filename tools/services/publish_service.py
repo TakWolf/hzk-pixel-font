@@ -14,6 +14,7 @@ def make_release_zips():
     for font_format in configs.font_formats:
         file_path = path_define.releases_dir.joinpath(f'hzk-pixel-font-{font_format}-v{configs.version}.zip')
         with zipfile.ZipFile(file_path, 'w') as file:
+            file.write(path_define.project_root_dir.joinpath('LICENSE-FONT.md'), 'README.md')
             for font_config in configs.font_configs:
                 font_file_name = f'hzk-pixel-{font_config.font_size}px.{font_format}'
                 file.write(path_define.outputs_dir.joinpath(font_file_name), font_file_name)

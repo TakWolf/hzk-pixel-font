@@ -39,7 +39,7 @@ UCDOS 系统的点阵字体，字模来源于 [BitmapFont](https://github.com/ag
 
 本字体使用的字模来源于：[BitmapFont](https://github.com/aguegu/BitmapFont/tree/master/font)
 
-[原项目作者博客描述](https://web.archive.org/web/20161108093925/http://aguegu.net/?p=1279) ，该字模可能来源于 UCDOS，或是早期的 WPS。
+[原项目作者博客描述](https://web.archive.org/web/20161108093925/http://aguegu.net/?p=1279)，该字模可能来源于 UCDOS，或是早期的 WPS。
 
 [其他网友考证](https://github.com/aguegu/BitmapFont/issues/1#issuecomment-2292428939)，字模由香港 Compufont 制作。
 
@@ -49,4 +49,4 @@ UCDOS 系统的点阵字体，字模来源于 [BitmapFont](https://github.com/ag
 
 ### 构建程序
 
-使用 [「MIT 许可证」](LICENSE) 授权。
+使用 [「MIT 许可证」](LICENSE-MIT) 授权。
