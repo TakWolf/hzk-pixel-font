@@ -1,5 +1,5 @@
-import datetime
 import math
+from datetime import datetime
 
 from loguru import logger
 from pixel_font_builder import FontBuilder, WeightName, SerifStyle, SlantStyle, WidthStyle, Glyph
@@ -33,7 +33,7 @@ def _create_builder(font_config: FontConfig, character_mapping: dict[int, str], 
     builder.font_metric.cap_height = font_config.cap_height
 
     builder.meta_info.version = configs.version
-    builder.meta_info.created_time = datetime.datetime.fromisoformat(f'{configs.version_time}T00:00:00Z')
+    builder.meta_info.created_time = datetime.fromisoformat(f'{configs.version_time}T00:00:00Z')
     builder.meta_info.modified_time = builder.meta_info.created_time
     builder.meta_info.family_name = f'HZK Pixel {font_config.font_size}px'
     builder.meta_info.weight_name = WeightName.REGULAR
