@@ -6,7 +6,7 @@ from tools.configs import path_define
 
 
 def make_preview_image(font_config: FontConfig):
-    font = ImageFont.truetype(path_define.outputs_dir.joinpath(f'hzk-pixel-{font_config.font_size}px.woff2'), font_config.font_size)
+    font = ImageFont.truetype(path_define.outputs_dir.joinpath(f'hzk-pixel-{font_config.font_size}px.otf.woff2'), font_config.font_size)
     text_color = (0, 0, 0, 255)
 
     image = Image.new('RGBA', (font_config.font_size * 27, font_config.font_size * 11), (255, 255, 255, 255))

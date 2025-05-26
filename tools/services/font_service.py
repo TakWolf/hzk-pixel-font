@@ -65,8 +65,14 @@ def make_fonts(font_config: FontConfig, character_mapping: dict[int, str], glyph
     builder = _create_builder(font_config, character_mapping, glyph_sequence)
     for font_format in configs.font_formats:
         file_path = path_define.outputs_dir.joinpath(f'hzk-pixel-{font_config.font_size}px.{font_format}')
-        if font_format == 'woff2':
+        if font_format == 'otf.woff':
+            builder.save_otf(file_path, flavor=Flavor.WOFF)
+        elif font_format == 'otf.woff2':
             builder.save_otf(file_path, flavor=Flavor.WOFF2)
+        elif font_format == 'ttf.woff':
+            builder.save_ttf(file_path, flavor=Flavor.WOFF)
+        elif font_format == 'ttf.woff2':
+            builder.save_ttf(file_path, flavor=Flavor.WOFF2)
         else:
             getattr(builder, f'save_{font_format}')(file_path)
         logger.info("Make font: '{}'", file_path)

@@ -6,12 +6,12 @@
 
 @font-face {
     font-family: HZK-12px;
-    src: url("../fonts/hzk-pixel-12px.woff2");
+    src: url("../fonts/hzk-pixel-12px.otf.woff2");
 }
 
 @font-face {
     font-family: HZK-16px;
-    src: url("../fonts/hzk-pixel-16px.woff2");
+    src: url("../fonts/hzk-pixel-16px.otf.woff2");
 }
 
 body {
