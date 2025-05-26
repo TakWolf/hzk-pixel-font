@@ -3,8 +3,8 @@ from typing import Literal, get_args
 from tools.configs.dump import DumpConfig
 from tools.configs.font import FontConfig
 
-version = '1.8.0'
-version_time = '2025-02-27'
+version = '1.9.0'
+version_time = '2025-05-26'
 
 dump_configs = [
     DumpConfig(
