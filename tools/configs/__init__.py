@@ -1,5 +1,3 @@
-from typing import Literal, get_args
-
 from tools.configs.dump import DumpConfig
 from tools.configs.font import FontConfig
 
@@ -102,6 +100,3 @@ font_configs = [
         source_names=['ASC16', 'HZK16'],
     ),
 ]
-
-type FontFormat = Literal['otf', 'otf.woff', 'otf.woff2', 'ttf', 'ttf.woff', 'ttf.woff2', 'bdf', 'pcf']
-font_formats = list[FontFormat](get_args(FontFormat.__value__))

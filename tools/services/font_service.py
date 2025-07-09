@@ -8,7 +8,7 @@ from pixel_font_knife import glyph_file_util
 from pixel_font_knife.glyph_file_util import GlyphFile
 
 from tools import configs
-from tools.configs import FontConfig
+from tools.configs import FontConfig, options
 from tools.configs import path_define
 
 
@@ -63,7 +63,7 @@ def make_fonts(font_config: FontConfig, character_mapping: dict[int, str], glyph
     path_define.outputs_dir.mkdir(parents=True, exist_ok=True)
 
     builder = _create_builder(font_config, character_mapping, glyph_sequence)
-    for font_format in configs.font_formats:
+    for font_format in options.font_formats:
         file_path = path_define.outputs_dir.joinpath(f'hzk-pixel-{font_config.font_size}px.{font_format}')
         if font_format == 'otf.woff':
             builder.save_otf(file_path, flavor=Flavor.WOFF)
