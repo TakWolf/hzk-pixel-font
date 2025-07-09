@@ -19,11 +19,11 @@ UCDOS 系统的点阵字体，字模来源于 [BitmapFont](https://github.com/ag
 
 12 像素预览：
 
-![Preview-12px.png](docs/preview-12px.png)
+![Preview-12px](docs/preview-12px.png)
 
 16 像素预览：
 
-![Preview-16px.png](docs/preview-16px.png)
+![Preview-16px](docs/preview-16px.png)
 
 ## 程序依赖
 
