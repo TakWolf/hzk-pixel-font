@@ -12,17 +12,17 @@ from tools.configs import FontConfig, options
 from tools.configs import path_define
 
 
-def collect_glyph_files(font_config: FontConfig) -> tuple[dict[int, str], list[GlyphFile]]:
+def collect_glyph_files(font_config: FontConfig) -> tuple[list[GlyphFile], dict[int, str]]:
     context = glyph_file_util.load_context(path_define.glyphs_dir.joinpath(str(font_config.font_size)))
     for source_name in font_config.source_names:
         context.update(glyph_file_util.load_context(path_define.dump_dir.joinpath(source_name)))
 
-    character_mapping = glyph_file_util.get_character_mapping(context)
     glyph_sequence = glyph_file_util.get_glyph_sequence(context)
-    return character_mapping, glyph_sequence
+    character_mapping = glyph_file_util.get_character_mapping(context)
+    return glyph_sequence, character_mapping
 
 
-def _create_builder(font_config: FontConfig, character_mapping: dict[int, str], glyph_sequence: list[GlyphFile]) -> FontBuilder:
+def _create_builder(font_config: FontConfig, glyph_sequence: list[GlyphFile], character_mapping: dict[int, str]) -> FontBuilder:
     builder = FontBuilder()
     builder.font_metric.font_size = font_config.font_size
     builder.font_metric.horizontal_layout.ascent = font_config.ascent
@@ -42,8 +42,6 @@ def _create_builder(font_config: FontConfig, character_mapping: dict[int, str], 
     builder.meta_info.width_style = WidthStyle.MONOSPACED
     builder.meta_info.vendor_url = 'https://hzk-pixel-font.takwolf.com'
 
-    builder.character_mapping.update(character_mapping)
-
     for glyph_file in glyph_sequence:
         horizontal_offset_y = (font_config.ascent + font_config.descent - glyph_file.height) // 2
         vertical_offset_x = -math.ceil(glyph_file.width / 2)
@@ -56,13 +54,15 @@ def _create_builder(font_config: FontConfig, character_mapping: dict[int, str], 
             bitmap=glyph_file.bitmap.data,
         ))
 
+    builder.character_mapping.update(character_mapping)
+
     return builder
 
 
-def make_fonts(font_config: FontConfig, character_mapping: dict[int, str], glyph_sequence: list[GlyphFile]):
+def make_fonts(font_config: FontConfig, glyph_sequence: list[GlyphFile], character_mapping: dict[int, str]):
     path_define.outputs_dir.mkdir(parents=True, exist_ok=True)
 
-    builder = _create_builder(font_config, character_mapping, glyph_sequence)
+    builder = _create_builder(font_config, glyph_sequence, character_mapping)
     for font_format in options.font_formats:
         file_path = path_define.outputs_dir.joinpath(f'hzk-pixel-{font_config.font_size}px.{font_format}')
         if font_format == 'otf.woff':

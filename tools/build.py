@@ -13,8 +13,8 @@ def main():
         dump_service.dump_font(dump_config)
 
     for font_config in configs.font_configs:
-        character_mapping, glyph_sequence = font_service.collect_glyph_files(font_config)
-        font_service.make_fonts(font_config, character_mapping, glyph_sequence)
+        glyph_sequence, character_mapping = font_service.collect_glyph_files(font_config)
+        font_service.make_fonts(font_config, glyph_sequence, character_mapping)
         image_service.make_preview_image(font_config)
 
     publish_service.make_release_zips()
