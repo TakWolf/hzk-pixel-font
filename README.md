@@ -44,4 +44,4 @@ UCDOS 系统的点阵字体，字模来源于 [BitmapFont](https://github.com/ag
 
 ### 构建程序
 
-使用 [「MIT 许可证」](LICENSE-MIT) 授权。
+采用 [MIT License](LICENSE-MIT) 授权。
