@@ -6,7 +6,7 @@ from tools.configs import path_define
 
 
 def make_preview_image(font_config: FontConfig):
-    font = ImageFont.truetype(path_define.outputs_dir.joinpath(f'hzk-pixel-{font_config.font_size}px.otf.woff2'), font_config.font_size)
+    font = ImageFont.truetype(path_define.OUTPUTS_DIR.joinpath(f'hzk-pixel-{font_config.font_size}px.otf.woff2'), font_config.font_size)
     text_color = (0, 0, 0, 255)
 
     image = Image.new('RGBA', (font_config.font_size * 27, font_config.font_size * 11), (255, 255, 255, 255))
@@ -18,7 +18,7 @@ def make_preview_image(font_config: FontConfig):
     draw.text((font_config.font_size, font_config.font_size * 9), '0123456789', fill=text_color, font=font)
     image = image.resize((image.width * 2, image.height * 2), Image.Resampling.NEAREST)
 
-    path_define.outputs_dir.mkdir(parents=True, exist_ok=True)
-    file_path = path_define.outputs_dir.joinpath(f'preview-{font_config.font_size}px.png')
+    path_define.OUTPUTS_DIR.mkdir(parents=True, exist_ok=True)
+    file_path = path_define.OUTPUTS_DIR.joinpath(f'preview-{font_config.font_size}px.png')
     image.save(file_path)
     logger.info("Make preview image: '{}'", file_path)

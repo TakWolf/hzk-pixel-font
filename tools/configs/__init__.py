@@ -1,10 +1,10 @@
 from tools.configs.dump import DumpConfig
 from tools.configs.font import FontConfig
 
-version = '1.14.0'
-version_time = '2026-09-01'
+VERSION = '1.14.0'
+VERSION_TIME = '2026-09-01'
 
-dump_configs = [
+DUMP_CONFIGS = [
     DumpConfig(
         font_name='ASC12',
         font_type='asc',
@@ -82,7 +82,7 @@ dump_configs = [
     ),
 ]
 
-font_configs = [
+FONT_CONFIGS = [
     FontConfig(
         font_size=12,
         ascent=9,

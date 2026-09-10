@@ -6,13 +6,13 @@ from tools.services import dump_service, font_service, image_service, publish_se
 
 
 def main():
-    if path_define.build_dir.exists():
-        shutil.rmtree(path_define.build_dir)
+    if path_define.BUILD_DIR.exists():
+        shutil.rmtree(path_define.BUILD_DIR)
 
-    for dump_config in configs.dump_configs:
+    for dump_config in configs.DUMP_CONFIGS:
         dump_service.dump_font(dump_config)
 
-    for font_config in configs.font_configs:
+    for font_config in configs.FONT_CONFIGS:
         glyph_sequence, character_mapping = font_service.collect_glyph_files(font_config)
         font_service.make_fonts(font_config, glyph_sequence, character_mapping)
         image_service.make_preview_image(font_config)

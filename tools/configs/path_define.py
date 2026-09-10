@@ -1,17 +1,17 @@
 from pathlib import Path
 
-project_root_dir = Path(__file__).parent.joinpath('..', '..').resolve()
+PROJECT_ROOT_DIR = Path(__file__).parent.joinpath('..', '..').resolve()
 
-assets_dir = project_root_dir.joinpath('assets')
-glyphs_dir = assets_dir.joinpath('glyphs')
-fonts_dir = assets_dir.joinpath('fonts')
+ASSETS_DIR = PROJECT_ROOT_DIR.joinpath('assets')
+GLYPHS_DIR = ASSETS_DIR.joinpath('glyphs')
+FONTS_DIR = ASSETS_DIR.joinpath('fonts')
 
-build_dir = project_root_dir.joinpath('build')
-dump_dir = build_dir.joinpath('dump')
-outputs_dir = build_dir.joinpath('outputs')
-releases_dir = build_dir.joinpath('releases')
+BUILD_DIR = PROJECT_ROOT_DIR.joinpath('build')
+DUMP_DIR = BUILD_DIR.joinpath('dump')
+OUTPUTS_DIR = BUILD_DIR.joinpath('outputs')
+RELEASES_DIR = BUILD_DIR.joinpath('releases')
 
-docs_dir = project_root_dir.joinpath('docs')
+DOCS_DIR = PROJECT_ROOT_DIR.joinpath('docs')
 
-www_dir = project_root_dir.joinpath('www')
-www_fonts_dir = www_dir.joinpath('fonts')
+WWW_DIR = PROJECT_ROOT_DIR.joinpath('www')
+WWW_FONTS_DIR = WWW_DIR.joinpath('fonts')

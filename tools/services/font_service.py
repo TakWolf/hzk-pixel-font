@@ -12,9 +12,9 @@ from tools.configs import path_define
 
 
 def collect_glyph_files(font_config: FontConfig) -> tuple[list[GlyphFile], dict[int, str]]:
-    context = glyph_file_util.load_context(path_define.glyphs_dir.joinpath(str(font_config.font_size)))
+    context = glyph_file_util.load_context(path_define.GLYPHS_DIR.joinpath(str(font_config.font_size)))
     for source_name in font_config.source_names:
-        context.update(glyph_file_util.load_context(path_define.dump_dir.joinpath(source_name)))
+        context.update(glyph_file_util.load_context(path_define.DUMP_DIR.joinpath(source_name)))
 
     glyph_sequence = glyph_file_util.get_glyph_sequence(context)
     character_mapping = glyph_file_util.get_character_mapping(context)
@@ -31,8 +31,8 @@ def _create_builder(font_config: FontConfig, glyph_sequence: list[GlyphFile], ch
     builder.font_metric.x_height = font_config.x_height
     builder.font_metric.cap_height = font_config.cap_height
 
-    builder.meta_info.version = configs.version
-    builder.meta_info.created_time = datetime.fromisoformat(f'{configs.version_time}T00:00:00Z')
+    builder.meta_info.version = configs.VERSION
+    builder.meta_info.created_time = datetime.fromisoformat(f'{configs.VERSION_TIME}T00:00:00Z')
     builder.meta_info.modified_time = builder.meta_info.created_time
     builder.meta_info.family_name = f'HZK Pixel {font_config.font_size}px'
     builder.meta_info.weight_name = WeightName.REGULAR
@@ -70,10 +70,10 @@ def _create_builder(font_config: FontConfig, glyph_sequence: list[GlyphFile], ch
 
 
 def make_fonts(font_config: FontConfig, glyph_sequence: list[GlyphFile], character_mapping: dict[int, str]):
-    path_define.outputs_dir.mkdir(parents=True, exist_ok=True)
+    path_define.OUTPUTS_DIR.mkdir(parents=True, exist_ok=True)
 
     builder = _create_builder(font_config, glyph_sequence, character_mapping)
-    for font_format in options.font_formats:
-        file_path = path_define.outputs_dir.joinpath(f'hzk-pixel-{font_config.font_size}px.{font_format}')
+    for font_format in options.FONT_FORMATS:
+        file_path = path_define.OUTPUTS_DIR.joinpath(f'hzk-pixel-{font_config.font_size}px.{font_format}')
         getattr(builder, f'save_{font_format.replace('.', '_')}')(file_path)
         logger.info("Make font: '{}'", file_path)

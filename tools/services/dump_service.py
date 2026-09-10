@@ -23,10 +23,10 @@ def _parse_bitmap(bitmap_bytes: bytes, row_bytes_size: int, width: int, height: 
 
 
 def dump_font(dump_config: DumpConfig):
-    dump_dir = path_define.dump_dir.joinpath(dump_config.font_name)
+    dump_dir = path_define.DUMP_DIR.joinpath(dump_config.font_name)
     dump_dir.mkdir(parents=True, exist_ok=True)
 
-    with path_define.fonts_dir.joinpath(dump_config.font_name).open('rb') as file:
+    with path_define.FONTS_DIR.joinpath(dump_config.font_name).open('rb') as file:
         if dump_config.font_type == 'asc':
             row_bytes_size = math.ceil(dump_config.font_size / 2 / 8)
             bitmap_bytes_size = row_bytes_size * dump_config.font_size
